@@ -2,14 +2,15 @@ extends KinematicBody2D
 
 enum State { STOP, MOVE }
 var state = State.MOVE
-var raw_bean = 0
+
 const TARGET_FPS = 60
-const ACCELERATION = 20
-const MAX_SPEED = 150
-const FRICTION = 10
-const AIR_RESISTANCE = 1
-const GRAVITY = 10
-const JUMP_FORCE = 500
+
+export var ACCELERATION = 20
+export var MAX_SPEED = 150
+export var FRICTION = 10
+export var AIR_RESISTANCE = 1
+export var GRAVITY = 10
+export var JUMP_FORCE = 300
 
 var spring = -600
 var motion = Vector2.ZERO
