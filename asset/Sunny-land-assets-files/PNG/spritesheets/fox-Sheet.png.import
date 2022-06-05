@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/back.png-c472c728bbe86f9a5b78aeda5f482d54.stex"
+path="res://.import/fox-Sheet.png-39582a6826cc098add652c833bcaf143.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/Sunny-land-assets-files/PNG/environment/layers/back.png"
-dest_files=[ "res://.import/back.png-c472c728bbe86f9a5b78aeda5f482d54.stex" ]
+source_file="res://asset/Sunny-land-assets-files/PNG/spritesheets/fox-Sheet.png"
+dest_files=[ "res://.import/fox-Sheet.png-39582a6826cc098add652c833bcaf143.stex" ]
 
 [params]
 
