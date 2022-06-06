@@ -1,0 +1,79 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/Menu/Main Menu.gd" type="Script" id=1]
+[ext_resource path="res://src/Levels/level starter.tscn" type="PackedScene" id=2]
+
+[node name="Node" type="Node"]
+script = ExtResource( 1 )
+target_scene = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -208.0
+margin_top = -331.0
+margin_right = 208.0
+margin_bottom = -66.0
+tab_align = 0
+
+[node name="Menu" type="Tabs" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -73.0
+margin_top = -67.5
+margin_right = 73.0
+margin_bottom = 67.5
+
+[node name="START" type="Button" parent="TabContainer/Menu/VBoxContainer"]
+margin_right = 146.0
+margin_bottom = 20.0
+text = "START"
+
+[node name="LEVELS" type="Button" parent="TabContainer/Menu/VBoxContainer"]
+margin_top = 24.0
+margin_right = 146.0
+margin_bottom = 44.0
+text = "LEVELS"
+
+[node name="QUIT" type="Button" parent="TabContainer/Menu/VBoxContainer"]
+margin_top = 48.0
+margin_right = 146.0
+margin_bottom = 68.0
+text = "QUIT"
+
+[node name="Settings" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="About" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[connection signal="pressed" from="TabContainer/Menu/VBoxContainer/START" to="." method="_on_START_pressed"]
+[connection signal="pressed" from="TabContainer/Menu/VBoxContainer/QUIT" to="." method="_on_QUIT_pressed"]

@@ -21,8 +21,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Luwak Adventure"
-run/main_scene="res://src/Levels/level starter.tscn"
+run/main_scene="res://src/Menu/Main Menu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://src/Autoload/Global.gd"
 
 [gdnative]
 
@@ -51,6 +55,11 @@ texture={
 "stream": false,
 "svg/scale": 1.0
 }
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Door"
 
 [physics]
 
