@@ -43,6 +43,7 @@ margin_bottom = 67.5
 [node name="START" type="Button" parent="TabContainer/Menu/VBoxContainer"]
 margin_right = 146.0
 margin_bottom = 20.0
+focus_neighbour_top = NodePath("../QUIT")
 text = "START"
 
 [node name="LEVELS" type="Button" parent="TabContainer/Menu/VBoxContainer"]
@@ -55,6 +56,7 @@ text = "LEVELS"
 margin_top = 48.0
 margin_right = 146.0
 margin_bottom = 68.0
+focus_neighbour_bottom = NodePath("../START")
 text = "QUIT"
 
 [node name="Settings" type="Tabs" parent="TabContainer"]
