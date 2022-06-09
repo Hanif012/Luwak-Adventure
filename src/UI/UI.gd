@@ -31,4 +31,5 @@ func _on_Settings_pressed():
 
 
 func _on_Main_Menu_pressed():
+	self.is_paused = false
 	get_tree().change_scene("res://src/Menu/Main Menu.tscn")
