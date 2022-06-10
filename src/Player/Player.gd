@@ -56,3 +56,7 @@ func _physics_process(delta):
 	elif motion.y < 0 and not is_on_floor():
 		animationPlayer.play("Jump")
 	motion = move_and_slide(motion, Vector2.UP)
+
+func play_walk_in_animation():
+	state = State.STOP
+	animationPlayer.play("DoorIn")

@@ -14,6 +14,7 @@ position = Vector2( -1, -20 )
 script = ExtResource( 8 )
 
 [node name="RickRoll" type="Sprite" parent="."]
+visible = false
 position = Vector2( 513, 294 )
 scale = Vector2( 0.758569, 0.797872 )
 texture = ExtResource( 4 )
@@ -29,7 +30,6 @@ tile_data = PoolIntArray( 8, 0, 524290, 65540, 0, 720906, 65541, 0, 327689, 6554
 [node name="UI" parent="UI" instance=ExtResource( 3 )]
 
 [node name="PlayerNode" type="Node2D" parent="."]
-position = Vector2( 252, 459 )
 
 [node name="Player" parent="PlayerNode" instance=ExtResource( 2 )]
 scale = Vector2( 1.5, 1.5 )
@@ -41,10 +41,10 @@ script = ExtResource( 6 )
 TargetNodepath = NodePath("../Player")
 
 [node name="Bean" parent="." instance=ExtResource( 5 )]
-position = Vector2( 290, 454 )
+position = Vector2( 288, 410 )
 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Door" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 347, 461 )
-target_scene = "res://src/Levels/level 1.tscn"
+target_scene = "res://src/Levels/level starter.tscn"

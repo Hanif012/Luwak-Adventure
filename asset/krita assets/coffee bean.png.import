@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spikes.png-5efcba85ead4dc9c909794df993cbfb1.stex"
+path="res://.import/coffee bean.png-d032e7275b2e1296cfdc4f350cfa4f09.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/Sunny-land-assets-files/PNG/environment/props/spikes.png"
-dest_files=[ "res://.import/spikes.png-5efcba85ead4dc9c909794df993cbfb1.stex" ]
+source_file="res://asset/krita assets/coffee bean.png"
+dest_files=[ "res://.import/coffee bean.png-d032e7275b2e1296cfdc4f350cfa4f09.stex" ]
 
 [params]
 
