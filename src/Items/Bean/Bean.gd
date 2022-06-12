@@ -13,6 +13,3 @@ func picked() -> void:
 	Global.score += score
 	anim_player.play("Picked")
 
-
-
-
