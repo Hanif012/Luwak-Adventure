@@ -33,6 +33,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Global="*res://src/Autoload/Global.tscn"
+MusicController="*res://src/Autoload/MusicController.tscn"
 
 [display]
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/Menu/Main Menu.gd" type="Script" id=1]
 [ext_resource path="res://src/Levels/level starter.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/UI/Tabs settings.tscn" type="PackedScene" id=3]
 
 [node name="Node" type="Node"]
 script = ExtResource( 1 )
@@ -59,12 +60,10 @@ margin_bottom = 68.0
 focus_neighbour_bottom = NodePath("../START")
 text = "QUIT"
 
-[node name="Settings" type="Tabs" parent="TabContainer"]
+[node name="Settings" parent="TabContainer" instance=ExtResource( 3 )]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 24.0
+margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
 
@@ -73,9 +72,28 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 24.0
+margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/About"]
+margin_left = 34.0
+margin_top = 32.0
+margin_right = 358.0
+margin_bottom = 150.0
+
+[node name="Credits" type="RichTextLabel" parent="TabContainer/About/VBoxContainer"]
+margin_right = 324.0
+margin_bottom = 118.0
+focus_mode = 2
+size_flags_vertical = 3
+text = "Credits
+
+Music 	: https://tallbeard.itch.io/music-loop-bundle
+
+SFX 		: 
+https://kronbits.itch.io/freesfx"
+selection_enabled = true
 
 [connection signal="pressed" from="TabContainer/Menu/VBoxContainer/START" to="." method="_on_START_pressed"]
 [connection signal="pressed" from="TabContainer/Menu/VBoxContainer/QUIT" to="." method="_on_QUIT_pressed"]

@@ -18,6 +18,7 @@ var motion = Vector2.ZERO
 onready var sprite = $Skin/Sprite
 onready var animationPlayer = $Skin/AnimationPlayer
 
+#preloader
 
 
 func _physics_process(delta):
@@ -31,7 +32,6 @@ func _physics_process(delta):
 		motion.x += x_input * ACCELERATION * delta * TARGET_FPS
 		motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
 		sprite.flip_h = x_input < 0
-		
 	else:
 		animationPlayer.play("Idle")
 	
@@ -43,7 +43,7 @@ func _physics_process(delta):
 #			$AudioStreamPlayer2D.play()
 		if Input.is_action_just_pressed("ui_up"):
 			motion.y = -JUMP_FORCE
-#			$AudioStreamPlayer2D.stop()
+			$Jump.play()
 	else:
 		animationPlayer.play("Jump")
 #		$AudioStreamPlayer2D2.play()

@@ -40,3 +40,14 @@ func _on_Settings_pressed():
 func _on_Main_Menu_pressed():
 	self.is_paused = false
 	get_tree().change_scene("res://src/Menu/Main Menu.tscn")
+
+
+#Audio
+
+
+func _on_VolumeSlider_value_changed(value):
+		AudioServer.set_bus_volume_db(
+			AudioServer.get_bus_index("Master"),
+			linear2db(value)
+	)
+

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Retro FootStep Grass 01.wav-b8f879e66de4a9f1524985605abe980b.sample"
+
+[deps]
+
+source_file="res://Audio/Retro FootStep Grass 01.wav"
+dest_files=[ "res://.import/Retro FootStep Grass 01.wav-b8f879e66de4a9f1524985605abe980b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
