@@ -8,12 +8,12 @@ var is_paused = false setget set_is_paused
 
 func _ready():
 	$ColorRect/vbox/Resume.grab_focus()
-	Global.connect("upgrade", self, "update_money")
-	Global.connect("update", self, "update_interface")
+#	Global.connect("upgrade", self, "update_money")
+	Global.connect("updated", self, "update_interface")
 	Global.connect("died", self, "_on_Player_died")
 	Global.connect("reset", self, "_on_Player_reset")
 	update_interface()
-	update_money()
+#	update_money()
 	
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):

@@ -19,9 +19,9 @@ text = "Bean(s) Collected: %s"
 [node name="Money" type="Label" parent="."]
 margin_left = 58.0
 margin_top = 58.0
-margin_right = 128.0
+margin_right = 196.0
 margin_bottom = 72.0
-text = "Money: %g"
+text = "Money : %s"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false

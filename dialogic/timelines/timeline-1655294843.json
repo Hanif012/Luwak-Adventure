@@ -1,0 +1,136 @@
+{
+	"events": [
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1655294854.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"animation": "1-fade_in.gd",
+			"animation_length": 1,
+			"animation_wait": true,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1655294737.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1655294737.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Halo"
+		},
+		{
+			"event_id": "dialogic_015",
+			"id": "anchor-1655298446",
+			"index": 0,
+			"name": "Tanya"
+		},
+		{
+			"character": "character-1655294854.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "Halo\nada yang bisa kubantu musang kecil?"
+		},
+		{
+			"choice": "Tanya",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1655294737.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Siapa kamu?"
+		},
+		{
+			"character": "character-1655294854.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Aku pemilik toko"
+		},
+		{
+			"character": "character-1655294737.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Ok"
+		},
+		{
+			"character": "character-1655294854.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Sepertinya kau bukan dari sini\nBarang apa yang kau bawa"
+		},
+		{
+			"character": "character-1655294737.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Perlengkapan untuk membuat minuman kopi\nApakah kau mau membelinya?"
+		},
+		{
+			"character": "character-1655294854.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Hmm\nBoleh\nAku akan memberimu 1 uang forest untuk secangkir kopi\nAku harus terjaga setiap malam"
+		},
+		{
+			"anchor_id": "anchor-1655298446",
+			"event_id": "dialogic_016"
+		},
+		{
+			"choice": "Jual kopi",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"change_scene": "",
+			"event_id": "dialogic_041"
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 1
+		},
+		{
+			"event_id": "dialogic_013"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.2 - Dev",
+		"file": "timeline-1655294843.json",
+		"name": "Shop"
+	}
+}
