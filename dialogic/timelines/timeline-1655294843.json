@@ -60,7 +60,7 @@
 
 			],
 			"portrait": "",
-			"question": "Halo\nada yang bisa kubantu musang kecil?"
+			"question": "Halo\nAda yang bisa kubantu musang kecil?"
 		},
 		{
 			"choice": "Tanya",
@@ -97,13 +97,13 @@
 			"character": "character-1655294737.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Perlengkapan untuk membuat minuman kopi\nApakah kau mau membelinya?"
+			"text": "Perlengkapan untuk membuat minuman kopi\nApakah kau mau membeli secangkir kopi?"
 		},
 		{
 			"character": "character-1655294854.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Hmm\nBoleh\nAku akan memberimu 1 uang forest untuk secangkir kopi\nAku harus terjaga setiap malam"
+			"text": "Hmm\nBoleh\nAku akan memberimu 10 uang Forest untuk secangkir kopi\nAku harus terjaga setiap malam"
 		},
 		{
 			"anchor_id": "anchor-1655298446",
@@ -117,8 +117,19 @@
 			"value": ""
 		},
 		{
-			"change_scene": "",
+			"change_scene": "res://src/Levels/level 2.tscn",
 			"event_id": "dialogic_041"
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 1
+		},
+		{
+			"choice": "Tidak",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
 		},
 		{
 			"event_id": "dialogic_022",

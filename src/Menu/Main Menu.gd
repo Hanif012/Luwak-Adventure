@@ -4,7 +4,7 @@ export(PackedScene) var target_scene
 
 func _ready():
 	$TabContainer/Menu/VBoxContainer/START.grab_focus()
-	MusicController.play_menu_music()
+	MusicController.play_gameplay_music()
 
 
 func _on_START_pressed():

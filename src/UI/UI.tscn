@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/UI/UI.gd" type="Script" id=1]
 [ext_resource path="res://src/UI/Tabs settings.tscn" type="PackedScene" id=2]
+[ext_resource path="res://asset/fonts/small-ui-font.tres" type="DynamicFont" id=3]
 
 [node name="UI" type="Control"]
 pause_mode = 2
@@ -14,13 +15,23 @@ margin_left = 58.0
 margin_top = 35.0
 margin_right = 120.0
 margin_bottom = 49.0
+custom_fonts/font = ExtResource( 3 )
 text = "Bean(s) Collected: %s"
+
+[node name="Cup of Coffee" type="Label" parent="."]
+margin_left = 58.0
+margin_top = 60.0
+margin_right = 196.0
+margin_bottom = 74.0
+custom_fonts/font = ExtResource( 3 )
+text = "Coffee : %s"
 
 [node name="Money" type="Label" parent="."]
 margin_left = 58.0
-margin_top = 58.0
+margin_top = 85.0
 margin_right = 196.0
-margin_bottom = 72.0
+margin_bottom = 99.0
+custom_fonts/font = ExtResource( 3 )
 text = "Money : %s"
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -36,6 +47,7 @@ anchor_right = 1.0
 anchor_bottom = 0.415333
 margin_top = 0.199989
 margin_bottom = -0.200012
+custom_fonts/font = ExtResource( 3 )
 text = "PAUSE"
 align = 1
 valign = 1
@@ -55,27 +67,31 @@ margin_bottom = 90.0
 
 [node name="Resume" type="Button" parent="ColorRect/vbox"]
 margin_right = 144.0
-margin_bottom = 20.0
+margin_bottom = 24.0
 focus_neighbour_top = NodePath("../Quit")
+custom_fonts/font = ExtResource( 3 )
 text = "Resume"
 
 [node name="Main Menu" type="Button" parent="ColorRect/vbox"]
-margin_top = 24.0
+margin_top = 28.0
 margin_right = 144.0
-margin_bottom = 44.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 3 )
 text = "Main Menu"
 
 [node name="Settings" type="Button" parent="ColorRect/vbox"]
-margin_top = 48.0
+margin_top = 56.0
 margin_right = 144.0
-margin_bottom = 68.0
+margin_bottom = 80.0
+custom_fonts/font = ExtResource( 3 )
 text = "Settings"
 
 [node name="Quit" type="Button" parent="ColorRect/vbox"]
-margin_top = 72.0
+margin_top = 84.0
 margin_right = 144.0
-margin_bottom = 92.0
+margin_bottom = 108.0
 focus_neighbour_bottom = NodePath("../Resume")
+custom_fonts/font = ExtResource( 3 )
 text = "Quit"
 
 [node name="Popup" type="Popup" parent="."]
@@ -94,6 +110,7 @@ anchor_bottom = 1.0
 color = Color( 0.12549, 0.141176, 0.192157, 1 )
 
 [node name="Tabs settings" parent="Popup" instance=ExtResource( 2 )]
+custom_fonts/font = ExtResource( 3 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 

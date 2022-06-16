@@ -30,6 +30,7 @@ states/Idle/position = Vector2( 309, 36 )
 states/Move/node = SubResource( 6 )
 states/Move/position = Vector2( 533, 108 )
 transitions = [ "Move", "Idle", SubResource( 8 ), "Idle", "Move", SubResource( 14 ) ]
+start_node = "Idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=16]
 
@@ -47,7 +48,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0.653 ]
+"values": [ 0.325 ]
 }
 
 [sub_resource type="Animation" id=18]
@@ -62,7 +63,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.8, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.65, 0.423, 0.423, 0.65 ]
+"values": [ 0.65, 0.206, 0.19, 0.65 ]
 }
 
 [sub_resource type="Animation" id=19]

@@ -17,5 +17,5 @@
 		}
 	],
 	"scale": 900,
-	"theme": ""
+	"theme": "default-theme.cfg"
 }

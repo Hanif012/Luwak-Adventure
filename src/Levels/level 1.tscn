@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://src/Levels/tile_2.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Player/Player.tscn" type="PackedScene" id=2]
@@ -7,7 +7,7 @@
 [ext_resource path="res://asset/oak_woods_v1.0/background/background_layer_1.png" type="Texture" id=5]
 [ext_resource path="res://src/Levels/Env Scripts/Camera2D.gd" type="Script" id=6]
 [ext_resource path="res://src/Items/Door/Door.tscn" type="PackedScene" id=7]
-[ext_resource path="res://src/Levels/level starter.gd" type="Script" id=8]
+[ext_resource path="res://src/Levels/level 1.gd" type="Script" id=8]
 [ext_resource path="res://asset/oak_woods_v1.0/decorations/shop_anim.png" type="Texture" id=9]
 [ext_resource path="res://asset/light.png" type="Texture" id=10]
 [ext_resource path="res://asset/forest tileset/BG/4.png.PNG" type="Texture" id=11]
@@ -15,8 +15,9 @@
 [ext_resource path="res://src/Levels/Env Scripts/DayNightCycle.tscn" type="PackedScene" id=13]
 [ext_resource path="res://asset/oak_woods_v1.0/background/background_layer_3.png" type="Texture" id=14]
 [ext_resource path="res://asset/oak_woods_v1.0/background/background_layer_2.png" type="Texture" id=15]
-[ext_resource path="res://Kunang.tscn" type="PackedScene" id=16]
+[ext_resource path="res://src/Items/Kunang.tscn" type="PackedScene" id=16]
 [ext_resource path="res://src/Items/Kunag2/Kunang.gd" type="Script" id=17]
+[ext_resource path="res://asset/Sunny-land-assets-files/PNG/environment/props/shrooms.png" type="Texture" id=18]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -55,7 +56,7 @@ extents = Vector2( 47, 35.75 )
 
 [sub_resource type="Curve2D" id=4]
 _data = {
-"points": PoolVector2Array( -28.541, 33.2978, 28.541, -33.2978, 739, 663, 0, 0, 0, 0, 780, 631, 39.8384, -0.594603, -39.8384, 0.594603, 670, 563, 0, 0, 0, 0, 652, 564, 1.78381, -33.2978, -1.78381, 33.2978, 627, 609, 16.5, -36.5, -16.5, 36.5, 548, 635, -29.7302, 0.594603, 29.7302, -0.594603, 610, 670, 0, 0, 0, 0, 665, 689, 0, 0, 0, 0, 739, 663 )
+"points": PoolVector2Array( -28.541, 33.2978, 28.541, -33.2978, 739, 663, -23.3345, 26.8701, 23.3345, -26.8701, 780, 631, 1.78381, -33.2978, -1.78381, 33.2978, 627, 609, 16.5, -36.5, -16.5, 36.5, 548, 635, -29.7302, 0.594603, 29.7302, -0.594603, 610, 670, 0, 0, 0, 0, 665, 689, 0, 0, 0, 0, 739, 663 )
 }
 
 [node name="Level starter" type="Node2D"]
@@ -189,65 +190,146 @@ position = Vector2( -1, -20 )
 [node name="Caffee" parent="." instance=ExtResource( 4 )]
 position = Vector2( 394, 722 )
 
-[node name="CanvasModulate2" type="CanvasModulate" parent="."]
-position = Vector2( 1, 20 )
-color = Color( 0.0352941, 0.113725, 0.227451, 1 )
+[node name="Shrooms" type="Sprite" parent="."]
+position = Vector2( 785, 697 )
+texture = ExtResource( 18 )
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="Shrooms2" type="Sprite" parent="."]
+position = Vector2( 303, 729 )
+texture = ExtResource( 18 )
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Path2D" type="Path2D" parent="Node2D"]
+position = Vector2( -3, -20 )
 curve = SubResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Node2D/Path2D"]
+position = Vector2( 739, 663 )
+rotation = -0.854447
 
-[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D"]
+[node name="Area2D" type="Area2D" parent="Node2D/Path2D/PathFollow2D"]
 script = ExtResource( 17 )
 _speed = 15
 
-[node name="Kunang" parent="Path2D/PathFollow2D/Area2D" instance=ExtResource( 16 )]
+[node name="Kunang" parent="Node2D/Path2D/PathFollow2D/Area2D" instance=ExtResource( 16 )]
 
-[node name="PathFollow2D2" type="PathFollow2D" parent="Path2D"]
-position = Vector2( 739.409, 596.375 )
-rotation = -2.49988
+[node name="PathFollow2D2" type="PathFollow2D" parent="Node2D/Path2D"]
+position = Vector2( 746.264, 604.525 )
+rotation = -2.87584
 offset = 102.18
 
-[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D2"]
+[node name="Area2D" type="Area2D" parent="Node2D/Path2D/PathFollow2D2"]
 script = ExtResource( 17 )
 _speed = 15
 
-[node name="Kunang" parent="Path2D/PathFollow2D2/Area2D" instance=ExtResource( 16 )]
+[node name="Kunang" parent="Node2D/Path2D/PathFollow2D2/Area2D" instance=ExtResource( 16 )]
 
-[node name="PathFollow2D3" type="PathFollow2D" parent="Path2D"]
-position = Vector2( 550.508, 630.512 )
-rotation = 2.09836
+[node name="PathFollow2D3" type="PathFollow2D" parent="Node2D/Path2D"]
+position = Vector2( 545.627, 653.875 )
+rotation = 1.09424
 offset = 340.637
 
-[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D3"]
+[node name="Area2D" type="Area2D" parent="Node2D/Path2D/PathFollow2D3"]
 script = ExtResource( 17 )
 _speed = 15
 
-[node name="Kunang" parent="Path2D/PathFollow2D3/Area2D" instance=ExtResource( 16 )]
+[node name="Kunang" parent="Node2D/Path2D/PathFollow2D3/Area2D" instance=ExtResource( 16 )]
 
-[node name="PathFollow2D4" type="PathFollow2D" parent="Path2D"]
-position = Vector2( 656.24, 683.292 )
-rotation = 0.560526
+[node name="PathFollow2D4" type="PathFollow2D" parent="Node2D/Path2D"]
+position = Vector2( 678.663, 684.2 )
+rotation = -0.337882
 offset = 483.69
 lookahead = 5.0
 
-[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D4"]
+[node name="Area2D" type="Area2D" parent="Node2D/Path2D/PathFollow2D4"]
 script = ExtResource( 17 )
 _speed = 15
 
-[node name="Kunang" parent="Path2D/PathFollow2D4/Area2D" instance=ExtResource( 16 )]
+[node name="Kunang" parent="Node2D/Path2D/PathFollow2D4/Area2D" instance=ExtResource( 16 )]
 
-[node name="PathFollow2D5" type="PathFollow2D" parent="Path2D"]
-position = Vector2( 647.582, 566.775 )
-rotation = 2.40912
+[node name="PathFollow2D5" type="PathFollow2D" parent="Node2D/Path2D"]
+position = Vector2( 645.142, 596.062 )
+rotation = 2.8953
 offset = 204.4
 lookahead = 5.0
 
-[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D5"]
+[node name="Area2D" type="Area2D" parent="Node2D/Path2D/PathFollow2D5"]
 script = ExtResource( 17 )
 _speed = 15
 
-[node name="Kunang" parent="Path2D/PathFollow2D5/Area2D" instance=ExtResource( 16 )]
+[node name="Kunang" parent="Node2D/Path2D/PathFollow2D5/Area2D" instance=ExtResource( 16 )]
+
+[node name="Path2D2" type="Path2D" parent="Node2D"]
+position = Vector2( 1318, -6 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+curve = SubResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Node2D/Path2D2"]
+position = Vector2( 739, 663 )
+rotation = -0.854447
+
+[node name="Area2D" type="Area2D" parent="Node2D/Path2D2/PathFollow2D"]
+script = ExtResource( 17 )
+_speed = 15
+
+[node name="Kunang" parent="Node2D/Path2D2/PathFollow2D/Area2D" instance=ExtResource( 16 )]
+
+[node name="PathFollow2D2" type="PathFollow2D" parent="Node2D/Path2D2"]
+position = Vector2( 746.264, 604.525 )
+rotation = -2.87584
+offset = 102.18
+
+[node name="Area2D" type="Area2D" parent="Node2D/Path2D2/PathFollow2D2"]
+script = ExtResource( 17 )
+_speed = 15
+
+[node name="Kunang" parent="Node2D/Path2D2/PathFollow2D2/Area2D" instance=ExtResource( 16 )]
+
+[node name="PathFollow2D3" type="PathFollow2D" parent="Node2D/Path2D2"]
+position = Vector2( 545.627, 653.875 )
+rotation = 1.09424
+offset = 340.637
+
+[node name="Area2D" type="Area2D" parent="Node2D/Path2D2/PathFollow2D3"]
+script = ExtResource( 17 )
+_speed = 15
+
+[node name="Kunang" parent="Node2D/Path2D2/PathFollow2D3/Area2D" instance=ExtResource( 16 )]
+
+[node name="PathFollow2D4" type="PathFollow2D" parent="Node2D/Path2D2"]
+position = Vector2( 678.663, 684.2 )
+rotation = -0.337882
+offset = 483.69
+lookahead = 5.0
+
+[node name="Area2D" type="Area2D" parent="Node2D/Path2D2/PathFollow2D4"]
+script = ExtResource( 17 )
+_speed = 15
+
+[node name="Kunang" parent="Node2D/Path2D2/PathFollow2D4/Area2D" instance=ExtResource( 16 )]
+
+[node name="PathFollow2D5" type="PathFollow2D" parent="Node2D/Path2D2"]
+position = Vector2( 645.142, 596.062 )
+rotation = 2.8953
+offset = 204.4
+lookahead = 5.0
+
+[node name="Area2D" type="Area2D" parent="Node2D/Path2D2/PathFollow2D5"]
+script = ExtResource( 17 )
+_speed = 15
+
+[node name="Kunang" parent="Node2D/Path2D2/PathFollow2D5/Area2D" instance=ExtResource( 16 )]
+
+[node name="CanvasModulate2" type="CanvasModulate" parent="."]
+position = Vector2( 1, 20 )
+color = Color( 0.0352941, 0.113725, 0.227451, 1 )
 
 [connection signal="body_entered" from="Shop/Shop" to="Shop/Shop" method="_on_Shop_body_entered"]

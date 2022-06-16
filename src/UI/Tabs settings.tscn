@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/UI/Settings.gd" type="Script" id=1]
+[ext_resource path="res://asset/fonts/small-ui-font.tres" type="DynamicFont" id=2]
 
 [node name="Tabs settings" type="Tabs"]
 anchor_right = 1.0
@@ -14,6 +15,7 @@ margin_left = -94.5
 margin_top = 32.0
 margin_right = 95.5
 margin_bottom = 46.0
+custom_fonts/font = ExtResource( 2 )
 text = "Settings"
 
 [node name="GridContainer" type="GridContainer" parent="."]
@@ -28,13 +30,13 @@ margin_bottom = 80.5
 columns = 2
 
 [node name="Music" type="Label" parent="GridContainer"]
-margin_top = 1.0
-margin_right = 41.0
-margin_bottom = 15.0
+margin_right = 44.0
+margin_bottom = 18.0
+custom_fonts/font = ExtResource( 2 )
 text = "Music"
 
 [node name="VolumeSlider" type="HSlider" parent="GridContainer"]
-margin_left = 45.0
+margin_left = 48.0
 margin_right = 190.0
 margin_bottom = 16.0
 size_flags_horizontal = 11
@@ -43,25 +45,27 @@ step = 0.01
 value = 1.0
 
 [node name="SFX" type="Label" parent="GridContainer"]
-margin_top = 21.0
-margin_right = 41.0
-margin_bottom = 35.0
+margin_top = 22.0
+margin_right = 44.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 2 )
 text = "SFX"
 
 [node name="VolumeSlider2" type="HSlider" parent="GridContainer"]
-margin_left = 45.0
-margin_top = 20.0
+margin_left = 48.0
+margin_top = 22.0
 margin_right = 190.0
-margin_bottom = 36.0
+margin_bottom = 38.0
 size_flags_horizontal = 11
 max_value = 1.0
 step = 0.01
 value = 1.0
 
 [node name="Save" type="Button" parent="GridContainer"]
-margin_top = 40.0
-margin_right = 41.0
-margin_bottom = 60.0
+margin_top = 44.0
+margin_right = 44.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 2 )
 text = "Save"
 
 [connection signal="value_changed" from="GridContainer/VolumeSlider" to="." method="_on_VolumeSlider_value_changed"]
