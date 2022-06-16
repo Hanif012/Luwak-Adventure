@@ -199,6 +199,7 @@ position = Vector2( 303, 729 )
 texture = ExtResource( 18 )
 
 [node name="Node2D" type="Node2D" parent="."]
+visible = false
 
 [node name="Path2D" type="Path2D" parent="Node2D"]
 position = Vector2( -3, -20 )
