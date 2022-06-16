@@ -172,7 +172,7 @@ script = ExtResource( 10 )
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
 shape = SubResource( 2 )
 shape_visible = false
-action = "dialogic_default_action"
+action = "ui_accept"
 visibility_mode = 1
 
 [connection signal="timeout" from="DefinitionInfo/Timer" to="." method="_on_Definition_Timer_timeout"]
