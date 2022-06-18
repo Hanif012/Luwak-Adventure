@@ -142,7 +142,7 @@ texture = SubResource( 8 )
 
 [node name="Light2D" type="Light2D" parent="Sprite5"]
 texture = ExtResource( 3 )
-texture_scale = 0.5
+texture_scale = 0.8
 color = Color( 1, 0.898039, 0.368627, 1 )
 
 [node name="Sprite2" type="Sprite" parent="."]

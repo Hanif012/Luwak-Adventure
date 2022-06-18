@@ -9,6 +9,10 @@ export(String, FILE, "*.tscn,*.scn") var target_scene
 
 # Solution - use Strings
 
+var active = false
+#func _process(delta):
+#	$Label.visible = false
+#
 func _ready():
 	pass
 
@@ -28,3 +32,20 @@ func next_level():
 		print("something failed in the door scene")
 		
 	Global.door_name = name
+	
+#func _process(delta):
+#	$Label.visible = active
+
+#func _input(event):
+#	if get_node_or_null('DialogNode') == null:
+#		if event.is_action_pressed("ui_accept") and active:
+#			$AnimationPlayer.play("Bruh")
+	
+func _on_Door_body_entered(body):
+	if body.name == 'Player':
+		$Label.visible = true
+		
+func _on_Door_body_exited(body):
+	if body.name == 'Player':
+		$Label.visible = false
+

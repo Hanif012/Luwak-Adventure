@@ -14,14 +14,26 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Levels/Env Scripts/daynightCycle.gd"
 }, {
+"base": "Node2D",
+"class": "DialogueController",
+"language": "GDScript",
+"path": "res://src/Player/DialogueController.gd"
+}, {
 "base": "",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
+}, {
+"base": "KinematicBody2D",
+"class": "Npc",
+"language": "GDScript",
+"path": "res://src/Npc/Npc.gd"
 } ]
 _global_script_class_icons={
 "DayNightCycle": "",
-"GitAPI": ""
+"DialogueController": "",
+"GitAPI": "",
+"Npc": ""
 }
 
 [application]
@@ -89,6 +101,7 @@ dialogic_default_action={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Door"
 2d_physics/layer_3="Bean"
+2d_physics/layer_7="Npc"
 
 [physics]
 

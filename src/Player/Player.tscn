@@ -1,11 +1,11 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://asset/Sunny-land-assets-files/PNG/spritesheets/fox-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://src/Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://asset/light.png" type="Texture" id=3]
 [ext_resource path="res://Audio/Retro FootStep Grass 01.wav" type="AudioStream" id=4]
 [ext_resource path="res://Audio/Retro Blop 18.wav" type="AudioStream" id=5]
-[ext_resource path="res://src/Player/NpcInteraction.gd" type="Script" id=6]
+[ext_resource path="res://src/Player/NpcInteraction.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 10 )
@@ -331,9 +331,6 @@ tracks/3/keys = {
 "values": [ true, true, true ]
 }
 
-[sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 12, 13.5 )
-
 [node name="Player" type="KinematicBody2D"]
 z_index = 1
 collision_layer = 5
@@ -381,9 +378,6 @@ bus = "SFX"
 stream = ExtResource( 5 )
 bus = "SFX"
 
-[node name="NpcInteraction" type="Area2D" parent="."]
-script = ExtResource( 6 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="NpcInteraction"]
-position = Vector2( -2, -3.5 )
-shape = SubResource( 10 )
+[node name="NpcInteraction" parent="." instance=ExtResource( 6 )]
+collision_layer = 0
+collision_mask = 64
