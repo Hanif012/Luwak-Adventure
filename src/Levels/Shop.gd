@@ -45,15 +45,15 @@ extends Area2D
 ##active = false
 #func unpause(timeline_end):
 #	get_tree().paused = false
+signal buttonshow
 
-
-
+var button_var = false
 
 var active = false
 
 func _process(delta):
 	$Label.visible = active
-
+#	$YSort/Panel.visible = active
 func _input(event):
 	if get_node_or_null('DialogNode') == null:
 		if event.is_action_pressed("ui_accept") and active:
@@ -66,3 +66,6 @@ func _on_Shop_body_entered(body):
 func _on_Shop_body_exited(body):
 	if body.name == 'Player':
 		active = false
+
+func _showbutton():
+	emit_signal("buttonshow")

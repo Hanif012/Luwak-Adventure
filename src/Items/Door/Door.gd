@@ -44,6 +44,7 @@ func next_level():
 func _on_Door_body_entered(body):
 	if body.name == 'Player':
 		$Label.visible = true
+		$AnimationPlayer2.play("Idle")
 		
 func _on_Door_body_exited(body):
 	if body.name == 'Player':

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://src/Levels/tile_2.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Player/Player.tscn" type="PackedScene" id=2]
@@ -31,27 +31,89 @@
 [ext_resource path="res://asset/oak_woods_v1.0/decorations/fence_1.png" type="Texture" id=29]
 [ext_resource path="res://src/Levels/Label.gd" type="Script" id=30]
 [ext_resource path="res://asset/fonts/small-ui-font.tres" type="DynamicFont" id=31]
+[ext_resource path="res://Audio/Retro Blop 18.wav" type="AudioStream" id=32]
+
+[sub_resource type="Shader" id=7]
+code = "/*
+Shader from Godot Shaders - the free shader library.
+godotshaders.com/shader/teleport-effect
+
+This shader is under CC0 license. Feel free to use, improve and 
+change this shader according to your needs and consider sharing 
+the modified result on godotshaders.com.
+*/
+
+shader_type canvas_item;
+
+uniform float progress : hint_range(0.0, 1.0);
+uniform float noise_desnity = 60;
+uniform float beam_size : hint_range(0.01, 0.15);
+uniform vec4 color : hint_color = vec4(0.0, 1.02, 1.2, 1.0);
+
+// We are generating our own noise here. You could experiment with the 
+// built in SimplexNoise or your own noise texture for other effects.
+vec2 random(vec2 uv){
+    uv = vec2( dot(uv, vec2(127.1,311.7) ),
+               dot(uv, vec2(269.5,183.3) ) );
+    return -1.0 + 2.0 * fract(sin(uv) * 43758.5453123);
+}
+
+float noise(vec2 uv) {
+    vec2 uv_index = floor(uv);
+    vec2 uv_fract = fract(uv);
+
+    vec2 blur = smoothstep(0.0, 1.0, uv_fract);
+
+    return mix( mix( dot( random(uv_index + vec2(0.0,0.0) ), uv_fract - vec2(0.0,0.0) ),
+                     dot( random(uv_index + vec2(1.0,0.0) ), uv_fract - vec2(1.0,0.0) ), blur.x),
+                mix( dot( random(uv_index + vec2(0.0,1.0) ), uv_fract - vec2(0.0,1.0) ),
+                     dot( random(uv_index + vec2(1.0,1.0) ), uv_fract - vec2(1.0,1.0) ), blur.x), blur.y) * 0.5 + 0.5;
+}
+
+void fragment()
+{
+	vec4 tex = texture(TEXTURE, UV);
+	
+	float noise = noise(UV * noise_desnity) * UV.y;
+	
+	float d1 = step(progress, noise);
+	float d2 = step(progress - beam_size, noise);
+	
+	vec3 beam = vec3(d2 - d1) * color.rgb;
+	
+	tex.rgb += beam;
+	tex.a *= d2;
+	
+	COLOR = tex;
+}"
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 7 )
+shader_param/progress = 0.0
+shader_param/noise_desnity = 60.0
+shader_param/beam_size = 0.15
+shader_param/color = Color( 0, 1.02, 1.2, 1 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 21.5, 32 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "Bruh"
-length = 5.0
+length = 2.0
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("House:material:shader_param/progress")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( -2, -2 ),
 "update": 0,
-"values": [ Vector2( 0, 1 ), Vector2( 0, -100 ), Vector2( 20, -100 ), Vector2( 2652, -93 ) ]
+"values": [ 0.0, 1.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:scale")
+tracks/1/path = NodePath("CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -59,20 +121,20 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ) ]
+"update": 1,
+"values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath(".:rotation_degrees")
+tracks/2/path = NodePath("AudioStreamPlayer2D:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
+"times": PoolRealArray( 0.2 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -89,6 +151,30 @@ tracks/0/keys = {
 "transitions": PoolRealArray( -2, -2 ),
 "update": 0,
 "values": [ Vector2( 1119, -78 ), Vector2( 1119, -68 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("House:material:shader_param/progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -140,6 +226,72 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("House:material:shader_param/progress")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( -2, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
 }
 
 [node name="Level starter" type="Node2D"]
@@ -358,6 +510,7 @@ position = Vector2( 0, 1 )
 script = ExtResource( 22 )
 
 [node name="House" type="Sprite" parent="env/house"]
+material = SubResource( 8 )
 position = Vector2( 1142, -121 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 21 )
@@ -365,6 +518,7 @@ texture = ExtResource( 21 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="env/house"]
 position = Vector2( 1121.5, -46 )
 shape = SubResource( 1 )
+disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="env/house"]
 autoplay = "Idle"
@@ -379,6 +533,12 @@ margin_right = 1159.0
 margin_bottom = -60.0
 custom_fonts/font = ExtResource( 31 )
 text = "?"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="env/house"]
+position = Vector2( 1120, -48 )
+stream = ExtResource( 32 )
+pitch_scale = 0.33
+bus = "SFX"
 
 [node name="Sign" type="Sprite" parent="env"]
 position = Vector2( -8, -9 )
@@ -661,9 +821,24 @@ position = Vector2( 1641, 510 )
 position = Vector2( 341, 556 )
 target_scene = "res://src/Levels/level 1.tscn"
 
+[node name="Label" type="Label" parent="Doors Ysort/Door"]
+visible = false
+margin_left = -28.3333
+margin_top = -42.5
+margin_right = 23.6667
+margin_bottom = -28.5
+custom_fonts/font = ExtResource( 31 )
+text = "Kembali?"
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Doors Ysort/Door"]
+anims/Idle = SubResource( 5 )
+anims/RESET = SubResource( 6 )
+
 [node name="ParallaxBackground2" parent="." instance=ExtResource( 11 )]
 
 [node name="CanvasModulate2" parent="." instance=ExtResource( 13 )]
 
 [connection signal="body_entered" from="env/house" to="env/house" method="_on_house_body_entered"]
 [connection signal="body_exited" from="env/house" to="env/house" method="_on_house_body_exited"]
+[connection signal="body_entered" from="Doors Ysort/Door" to="Doors Ysort/Door" method="_on_Door_body_entered"]
+[connection signal="body_exited" from="Doors Ysort/Door" to="Doors Ysort/Door" method="_on_Door_body_exited"]
