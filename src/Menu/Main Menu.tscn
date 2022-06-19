@@ -161,7 +161,7 @@ text = "QUIT"
 [node name="Settings" parent="TabContainer" instance=ExtResource( 3 )]
 visible = false
 margin_left = 4.0
-margin_top = 32.0
+margin_top = 36.0
 margin_right = -4.0
 margin_bottom = -4.0
 
@@ -170,7 +170,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 32.0
+margin_top = 36.0
 margin_right = -4.0
 margin_bottom = -4.0
 
@@ -187,6 +187,13 @@ focus_mode = 2
 size_flags_vertical = 3
 custom_fonts/normal_font = ExtResource( 4 )
 text = "Credits
+
+Textures:
+https://ansimuz.itch.io/sunny-land-pixel-game-art
+
+https://brullov.itch.io/oak-woods
+
+https://mamanezakon.itch.io/forest-tileset
 
 Music 	: https://tallbeard.itch.io/music-loop-bundle
 
