@@ -40,7 +40,7 @@ _global_script_class_icons={
 
 config/name="Luwak Adventure"
 run/main_scene="res://src/Menu/Main Menu.tscn"
-config/icon="res://icon.png"
+config/icon="res://asset/player-idle-1.png"
 
 [autoload]
 
